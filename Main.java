@@ -9,12 +9,13 @@ public class Main {
         AnalisadorLexico analisador = new AnalisadorLexico();
 
         // Chamando o método de análise para obter os tokens
-        List<String> tokens = analisador.analisar(texto);
+        List<AnalisadorLexico.Token> tokens = analisador.analisar(texto);
 
         // Exibindo os tokens
-        System.out.println("Tokens:");
-        for (String token : tokens) {
-            System.out.println(token+"\n");
+        System.out.println("Token\t\tCategoria");
+        System.out.println("------------------------");
+        for (AnalisadorLexico.Token token : tokens) {
+            System.out.println(token.getValor() + "\t\t" + token.getCategoria());
         }
     }
 }
