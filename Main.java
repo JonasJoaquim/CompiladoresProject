@@ -1,5 +1,6 @@
 
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,11 +12,14 @@ public class Main {
         // Chamando o método de análise para obter os tokens
         List<AnalisadorLexico.Token> tokens = analisador.analisar(texto);
 
-        // Exibindo os tokens
-        System.out.println("Token\t\tCategoria");
-        System.out.println("------------------------");
-        for (AnalisadorLexico.Token token : tokens) {
-            System.out.println(token.getValor() + "\t\t" + token.getCategoria());
+
+
+        AnalisadorSemantico analisadorSemantico = new AnalisadorSemantico();
+        Map<AnalisadorLexico.Categoria, List<String>> tokensPorCategoria = analisadorSemantico.reorganizarTokens(tokens);
+        
+        System.out.println("Tokens reorganizados por categoria:");
+        for (Map.Entry<AnalisadorLexico.Categoria, List<String>> entry : tokensPorCategoria.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
-    }
+   }
 }
