@@ -3,6 +3,7 @@ import java.util.List;
 
 public class AnalisadorLexico {
     public enum Categoria {
+        PALAVRA,
         SUBSTANTIVO,
         VERBO,
         ADJETIVO,
@@ -49,7 +50,7 @@ public class AnalisadorLexico {
         if (token.matches("[A-Za-z]+")) {
             // Verificar se é uma palavra conhecida de alguma categoria
             // Aqui você pode implementar uma lógica mais sofisticada de classificação de palavras
-            return Categoria.SUBSTANTIVO;
+            return Categoria.PALAVRA;
         } else if (token.equals(".") || token.equals("!") || token.equals("?")) {
             return Categoria.PONTUACAO_FINAL;
         } else if (token.equals(",")) {
